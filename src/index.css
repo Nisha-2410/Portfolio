@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@keyframes slide-diagonal-in {
+  from {
+    transform: translate(100%, -100%) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-diagonal-out {
+  from {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(100%, -100%) scale(0.95);
+    opacity: 0;
+  }
+}
+
+.animate-slide-diagonal-in {
+  animation: slide-diagonal-in 0.4s ease-in-out backwards;
+ /* rounded-3xl */
+}
+
+.animate-slide-diagonal-out {
+  animation: slide-diagonal-out 1s ease-in-out forwards;
+ /* rounded-3xl */
+}
+
+/* index.css */
+.custom-gradient-bg {
+background-image: linear-gradient(to right bottom, #f4f7fb, #e2eaff, #dfdaff, #e9c5ff, #fbadf2);
+}
+
