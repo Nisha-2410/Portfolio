@@ -37,3 +37,6 @@
 background-image: linear-gradient(to right bottom, #f4f7fb, #e2eaff, #dfdaff, #e9c5ff, #fbadf2);
 }
 
+.custom-gradient-about {
+    background-image: linear-gradient(to left bottom, #fbadf2, #efc2ff, #dfdbff, #e5ebff, #f6faff);
+}
