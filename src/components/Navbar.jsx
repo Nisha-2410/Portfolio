@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState } from "react";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);

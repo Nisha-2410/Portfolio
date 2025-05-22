@@ -1,7 +1,8 @@
-import React from "react";
+
 import cat from "../assets/cat.jpg";
-import { About } from "./About"
+import { About } from "./About";
 import { Skills } from "./Skills";
+import Contact from "./Contact";
 
 const Hero = () => {
   return (
@@ -34,7 +35,7 @@ const Hero = () => {
           <div className="lg:mr-70">
             <img
               src={cat}
-              className=" rounded-full mt-8 w-40 h-auto md:w-100 md:-ml-6  lg:w-2xl lg:my-1  "
+              className=" rounded-full mt-8 w-40 h-auto md:w-xl md:-ml-6  lg:w-xl lg:my-1  "
             ></img>
           </div>
         </div>
@@ -44,6 +45,7 @@ const Hero = () => {
       
        <About/>
        <Skills/>
+       <Contact/>
       
     </div>
   );

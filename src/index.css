@@ -40,3 +40,28 @@ background-image: linear-gradient(to right bottom, #f4f7fb, #e2eaff, #dfdaff, #e
 .custom-gradient-about {
     background-image: linear-gradient(to left bottom, #fbadf2, #efc2ff, #dfdbff, #e5ebff, #f6faff);
 }
+
+@keyframes borderAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Extend Tailwind for .btn6 pseudo-element and animation */
+.btn6::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4, #a8edea, #fed6e3);
+  background-size: 600% 600%;
+  border-radius: 10px;
+  z-index: -1;
+  filter: blur(4px);
+  animation: borderAnim 3s linear infinite;
+}
