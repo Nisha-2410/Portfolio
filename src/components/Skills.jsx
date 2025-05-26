@@ -10,7 +10,7 @@ export const Skills = () => {
 
     {/* Left column – move to the start */}
     <div className='flex flex-row  '>
-  <CloudSkill skill="C++" overlap={true} />
+  <CloudSkill skill="C++" overlap={true}  />
   <CloudSkill skill="JavaScript" overlap={true} />
   <CloudSkill skill="Python" overlap={true} />
 

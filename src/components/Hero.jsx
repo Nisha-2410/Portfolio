@@ -3,6 +3,7 @@ import cat from "../assets/cat.jpg";
 import { About } from "./About";
 import { Skills } from "./Skills";
 import Contact from "./Contact";
+import { Project } from "./Project";
 
 const Hero = () => {
   return (
@@ -45,6 +46,7 @@ const Hero = () => {
       
        <About/>
        <Skills/>
+       <Project/>
        <Contact/>
       
     </div>
