@@ -20,7 +20,7 @@ export const Project = () => {
 
       <div className="flex flex-col md:flex-row justify-between gap-10 mt-8 text-center ml-3 mr-3 mb-2 items-start">
         {/* iNotebook Card */}
-        <div className="bg-amber-50 rounded-4xl w-95 md:w-[32%] shadow-amber-600 shadow bg-opacity-80 
+        <div className="bg-amber-50 rounded-4xl w-fit md:w-[32%] shadow-amber-600 shadow bg-opacity-80 
         md:ml-10 md:mr-10 transform transition duration-300 hover:scale-105  hover:bg-amber-50">
           <div className="font-bold mt-2 font-serif">iNotebook</div>
           <div className="text-sm mb-2 font-serif">
@@ -56,7 +56,7 @@ export const Project = () => {
         </div>
 
         {/* NewsMonkey Card */}
-        <div className="bg-amber-50 rounded-4xl w-95 md:w-[32%] shadow-amber-600 shadow bg-opacity-80 
+        <div className="bg-amber-50 rounded-4xl w-fit md:w-[32%] shadow-amber-600 shadow bg-opacity-80 
         md:ml-10 md:mr-10 transform transition duration-300 hover:scale-105 hover:bg-amber-50">
           <div className="font-bold mt-2 font-serif">NewsMonkey</div>
           <div className="text-sm mb-2 font-serif">Live News App</div>
@@ -90,7 +90,7 @@ export const Project = () => {
         </div>
 
         {/* Portfolio Card */}
-        <div className="bg-amber-50 rounded-4xl w-95 md:w-[32%] shadow-amber-600 shadow bg-opacity-80 
+        <div className="bg-amber-50 rounded-4xl w-fit md:w-[32%] shadow-amber-600 shadow bg-opacity-80 
         md:ml-10 md:mr-10 transform transition duration-300 hover:scale-105  hover:bg-amber-50">
           <div className="font-bold mt-2 font-serif">Portfolio</div>
           <div className="text-sm mb-2 font-serif">
