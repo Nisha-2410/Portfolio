@@ -6,7 +6,7 @@ export function About() {
   <div className=' text-4xl font-bold  md:text-5xl lg:6xl'>
     About Me
   </div>
-  <div className=' bg-white flex  shadow-amber-600 shadow bg-opacity-80 flex-col justify-center items-center mt-5 rounded-4xl  w-95 md:w-[60%] lg:w-[70%] h-100% ml-8 mr-8'>
+  <div className=' bg-white flex  shadow-amber-600 shadow bg-opacity-80 flex-col justify-center items-center mt-5 rounded-4xl  w-fit max-w-4xl md:w-[60%] lg:w-[70%] h-auto ml-8 mr-8'>
 
     <div className='p-2'>
     <div className='w-11/12 md:w-[65%] lg:w-[75%] text-center mx-auto font-serif text-xl md:text-2xl mt-8'>
