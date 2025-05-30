@@ -14,7 +14,7 @@ const CloudSkill = ({ skill,overlap }) => {
         alt="cloud"
         className="w-full md:w-[150%] lg:w-[180%] object-contain z-0 pointer-events-none"
       />
-      <div className="absolute z-10 mt-2 text-xs md:text-xl">{skill}</div>
+      <div className="absolute z-10 mt-2 text-sm md:text-xl">{skill}</div>
     </div>
 
 
