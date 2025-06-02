@@ -54,7 +54,7 @@ export function About() {
             initial={{ opacity: 0, rotate: -15 }}
             whileInView={{ opacity: 1, rotate: 0 }}
             transition={{ duration: 0.8, delay: 0.6, type: "spring" }}
-            viewport={{ once: true }}
+           viewport={{ once: true, amount: 0.8 }}
           >
             <img 
               src={flower} 

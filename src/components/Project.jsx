@@ -73,7 +73,7 @@ export const Project = () => {
         variants={slideUpVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.8 }}
         className="grid gap-10 md:grid-cols-3"
       >
         {projects.map((proj) => (
