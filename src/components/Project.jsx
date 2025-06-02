@@ -63,10 +63,10 @@ export const Project = () => {
   return (
     <section className="pt-10 pb-15 px-5 ">
       <h1
-        className="text-4xl md:text-6xl font-extrabold text-center mb-8"
+        className="text-4xl md:text-5xl font-bold text-center mb-8"
         style={{ color: "#5B3E96" }}
       >
-        My Projects
+        What I’ve <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-900 bg-clip-text text-transparent font-sans underline">Built</span>
       </h1>
 
       <motion.div
@@ -79,7 +79,7 @@ export const Project = () => {
         {projects.map((proj) => (
           <div
             key={proj.key}
-            className="bg-white p-6 rounded-3xl shadow-inner border border-gray-200 transition-transform transform hover:scale-105"
+            className="bg-white p-6 text-center rounded-3xl shadow-inner border border-gray-200 transition-transform transform hover:scale-105"
             style={{
               background: "rgba(255, 255, 255, 0.85)",
               boxShadow: "inset 0 0 15px 5px rgba(127, 112, 209, 0.6)",

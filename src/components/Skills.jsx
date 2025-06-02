@@ -58,11 +58,11 @@ export const Skills = () => {
       variants={containerVariants}
     >
       <motion.h2
-        className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-center"
+        className="text-4xl md:text-4xl lg:text-5xl font-bold mb-10 text-center"
         variants={topRowVariant}
         style={{ color: "#5B3E96" }}
       >
-        Here’s what I’m <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-900 bg-clip-text text-transparent font-sans underline">CAPABLE</span> of
+        Here’s what I’m <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-900 bg-clip-text text-transparent font-sans underline">Capable</span> of
       </motion.h2>
 
       {/* === Small Devices Custom Layout === */}
