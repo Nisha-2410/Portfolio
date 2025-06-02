@@ -52,6 +52,14 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
+  const handleScrollToSection = (href) => {
+    const id = href.replace("#", "");
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <nav className="flex justify-between items-center p-3 bg-gray-100 sticky top-0 z-50">
@@ -71,7 +79,11 @@ const Navbar = () => {
         </div>
 
         {/* Hamburger Icon */}
-        <button className="md:hidden" onClick={toggleMenu} aria-label="Toggle menu">
+        <button
+          className="md:hidden"
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
           <i className="fa-solid fa-bars text-2xl"></i>
         </button>
       </nav>
@@ -101,7 +113,11 @@ const Navbar = () => {
                 <motion.a
                   key={label}
                   href={href}
-                  onClick={toggleMenu}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    toggleMenu();
+                    handleScrollToSection(href);
+                  }}
                   className="hover:text-rose-400 cursor-pointer text-xl"
                   variants={itemVariants}
                 >
