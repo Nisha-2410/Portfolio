@@ -54,7 +54,7 @@ export const Skills = () => {
       className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 mt-10"
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.4 }}
       variants={containerVariants}
     >
       <motion.h2
