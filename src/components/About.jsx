@@ -20,7 +20,7 @@ export function About() {
 
         {/* Card */}
         <motion.div
-          className="flex flex-col justify-center items-center mt-5 rounded-3xl w-fit max-w-4xl md:w-[60%] lg:w-[70%] h-auto mx-8"
+          className="flex flex-col justify-center items-center mt-5 rounded-3xl w-fit max-w-4xl md:w-[60%] lg:w-[70%] h-auto mx-3"
           style={{ 
             background: 'rgba(255, 255, 255, 0.85)',
             boxShadow: 'inset 0 0 15px 5px rgba(127, 112, 209, 0.6)',
@@ -33,7 +33,7 @@ export function About() {
         >
           {/* Paragraph Text */}
           <motion.div
-            className="w-11/12 md:w-[65%] lg:w-[75%] text-center mx-auto font-serif text-gray-800 text-lg mt-8"
+            className="w-[97%] text-sm md:w-[65%] lg:w-[75%] text-center mx-auto font-serif text-gray-800 md:text-lg mt-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}

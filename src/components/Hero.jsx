@@ -65,35 +65,40 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <a
-              href="https://www.instagram.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="border text-gray-600 border-gray-300 p-3 rounded-full hover:scale-110 transition-transform duration-300"
-            >
-              <i className="fa-brands fa-instagram"></i>
-            </a>
+<a
+  href="https://www.instagram.com/yourusername"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Instagram"
+  className="border text-gray-600 border-gray-300 rounded-full hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+  style={{ width: '40px', height: '40px' }}
+>
+  <i className="fa-brands fa-instagram text-xl"></i>
+</a>
 
-            <a
-              href="https://wa.me/yourphonenumber?text=Hello%20Nisha!"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="border text-gray-600 border-gray-300 p-3 rounded-full hover:scale-110 transition-transform duration-300"
-            >
-              <i className="fa-brands fa-whatsapp"></i>
-            </a>
 
-            <a
-              href="https://github.com/yourgithubusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="border text-gray-600 border-gray-300 p-3 rounded-full hover:scale-110 transition-transform duration-300"
-            >
-              <i className="fa-brands fa-github"></i>
-            </a>
+<a
+  href="https://wa.me/yourphonenumber?text=Hello%20Nisha!"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="WhatsApp"
+  className="border text-gray-600 border-gray-300 rounded-full hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+  style={{ width: '40px', height: '40px' }}
+>
+  <i className="fa-brands fa-whatsapp text-xl"></i>
+</a>
+
+<a
+  href="https://github.com/yourgithubusername"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="GitHub"
+  className="border text-gray-600 border-gray-300 rounded-full hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+  style={{ width: '40px', height: '40px', marginLeft: '10px' }} // Optional margin for spacing
+>
+  <i className="fa-brands fa-github text-xl"></i>
+</a>
+
           </motion.div>
         </motion.div>
 
