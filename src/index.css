@@ -36,6 +36,27 @@ body {
  /* rounded-3xl */
 }
 
+@keyframes gradient-slide {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.hover-gradient-slide {
+  background-size: 200% 200%;
+        /* Make gradient twice as big for sliding */
+  background-position: 0% 0%;       /* Start position */
+  transition: background-position 1.5s ease;
+}
+
+.hover-gradient-slide:hover {
+  animation: gradient-slide 0.3s forwards;
+}
+
+
 /* index.css */
 .custom-gradient-bg {
 background-image: linear-gradient(to right bottom, #f4f7fb, #e2eaff, #dfdaff, #e9c5ff, #fbadf2);
