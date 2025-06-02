@@ -15,7 +15,7 @@ export function About() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          About Me
+          About Me  In a <span className='bg-gradient-to-r from-purple-700 via-purple-500 to-pink-500 bg-clip-text text-transparent transition-all duration-500 group-hover:from-pink-500 group-hover:via-fuchsia-500 group-hover:to-purple-600'>Nutshell</span>
         </motion.div>
 
         {/* Card */}
