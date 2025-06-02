@@ -112,7 +112,7 @@ const Hero = () => {
           <img
             src={cat}
             alt="Nisha"
-            className="rounded-full w-[220px] md:w-[280px] lg:w-[320px] transition-transform duration-300 hover:scale-105 shadow-[0_0_30px_5px_rgba(147,51,234,0.6)]"
+            className="rounded-full w-[220px] md:w-[280px] lg:w-[320px] transition-transform duration-300 hover:scale-105 shadow-[0_0_30px_5px_rgba(147,51,234,0.6)] mt-5"
           />
         </motion.div>
       </div>
