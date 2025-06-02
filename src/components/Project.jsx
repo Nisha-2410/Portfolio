@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import "./Contact.css";
 
 export const Project = () => {
   const [showMore, setShowMore] = useState({
@@ -10,140 +9,123 @@ export const Project = () => {
   });
 
   const toggle = (key) => {
-    setShowMore({ ...showMore, [key]: !showMore[key] });
+    setShowMore((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: (delay) => ({
+  const slideUpVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
       opacity: 1,
-      scale: 1,
+      y: 0,
       transition: {
-        duration: 2,
+        duration: 1,
         ease: "easeOut",
-        delay,
       },
-    }),
+    },
   };
+
+  const projects = [
+    {
+      key: "inote",
+      title: "iNotebook",
+      subtitle: "Cloud-Based Note-Taking App",
+      brief: "A secure and responsive cloud-based note-taking web app...",
+      details: [
+        "Users can sign up, log in, and manage notes from anywhere.",
+        "Tech Stack: React, Node.js, Express, MongoDB",
+        "GitHub: https://github.com/Nisha-2410/inotebook",
+      ],
+    },
+    {
+      key: "news",
+      title: "NewsMonkey",
+      subtitle: "Live News App",
+      brief: "A news aggregator app that fetches real-time headlines...",
+      details: [
+        "Get category-based news using News API.",
+        "Tech Stack: React, NewsAPI",
+        "GitHub: https://github.com/Nisha-2410/my-app",
+      ],
+    },
+    {
+      key: "portfolio",
+      title: "Portfolio",
+      subtitle: "Personal Developer Website",
+      brief: "A personal portfolio website showcasing projects...",
+      details: [
+        "Includes skills, contact form, and responsive layout.",
+        "Tech Stack: React,HTML,Tailwind,framer motion",
+        "GitHub: https://github.com/Nisha-2410/Portfolio",
+      ],
+    },
+  ];
 
   return (
-    <div className="flex flex-col justify-center items-center mb-10">
-      <h1 className="font-bold text-3xl md:text-5xl lg:text-6xl mt-8">My Projects</h1>
+    <section className="pt-10 pb-15 px-5 ">
+      <h1
+        className="text-4xl md:text-6xl font-extrabold text-center mb-8"
+        style={{ color: "#5B3E96" }}
+      >
+        My Projects
+      </h1>
 
-      <div className="flex flex-col md:flex-row justify-between gap-10 mt-8 text-center ml-3 mr-3 mb-2 items-start">
-
-        {/* iNotebook Card */}
-        <motion.div
-          custom={0}
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="bg-white rounded-4xl w-fit md:w-[32%] shadow-amber-600 shadow bg-opacity-80 md:ml-10 md:mr-10 lg:mr-15 lg:ml-15 transform transition duration-300 hover:scale-105 hover:bg-amber-50"
-        >
-          <div className="font-bold mt-2 font-serif">iNotebook</div>
-          <div className="text-sm mb-2 font-serif">Cloud-Based Note-Taking App</div>
-          <div className="p-2 pl-3 pr-3 font-serif">
-            A secure and responsive cloud-based note-taking web app...
-            <div
-              className={`transition-all duration-300 ease-in-out ${
-                showMore.inote ? "max-h-96" : "max-h-0 overflow-hidden"
-              }`}
-            >
-              <p>
-                Users can sign up, log in, and create, update, or delete notes from anywhere. Ideal for productivity on the go.
-              </p>
-              <p>
-                <span className="font-semibold">Tech Stack:</span> React, Node.js, Express, MongoDB
-              </p>
-              <p>
-                <span className="font-semibold">GitHub:</span> [Link]
-              </p>
-            </div>
-          </div>
-          <button
-            className="mb-4 mt-2 bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] p-6 shadow-lg px-4 py-1 rounded-full hover:from-[var(--secondary-color)] hover:to-[var(--primary-color)] transition-colors duration-500 hover:scale-105 font-bold"
-            onClick={() => toggle("inote")}
+      <motion.div
+        variants={slideUpVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid gap-10 md:grid-cols-3"
+      >
+        {projects.map((proj) => (
+          <div
+            key={proj.key}
+            className="bg-white p-6 rounded-3xl shadow-inner border border-gray-200 transition-transform transform hover:scale-105"
+            style={{
+              background: "rgba(255, 255, 255, 0.85)",
+              boxShadow: "inset 0 0 15px 5px rgba(127, 112, 209, 0.6)",
+              border: "1px solid rgba(127, 112, 209, 0.5)",
+            }}
           >
-            {showMore.inote ? "Show Less" : "Learn More"}
-          </button>
-        </motion.div>
-
-        {/* NewsMonkey Card */}
-        <motion.div
-          custom={0.3}
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="bg-white rounded-4xl w-fit md:w-[32%] shadow-amber-600 shadow bg-opacity-80 md:ml-10 md:mr-10 transform transition duration-300 hover:scale-105 hover:bg-amber-50"
-        >
-          <div className="font-bold mt-2 font-serif">NewsMonkey</div>
-          <div className="text-sm mb-2 font-serif">Live News App</div>
-          <div className="p-2 pl-3 pr-3 font-serif">
-            A news aggregator app that fetches real-time headlines...
-            <div
-              className={`transition-all duration-300 ease-in-out ${
-                showMore.news ? "max-h-96" : "max-h-0 overflow-hidden"
-              }`}
+            <h2
+              className="text-xl font-bold mb-1"
+              style={{ color: "#5B3E96" }}
             >
-              <p>
-                Users can view news based on categories like business, technology, and sports using the News API.
-              </p>
-              <p>
-                <span className="font-semibold">Tech Stack:</span> React, Node.js, Express, MongoDB
-              </p>
-              <p>
-                <span className="font-semibold">GitHub:</span> [Link]
-              </p>
-            </div>
-          </div>
-          <button
-            className="mb-4 mt-2 bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] p-6 shadow-lg px-4 py-1 rounded-full hover:from-[var(--secondary-color)] hover:to-[var(--primary-color)] transition-colors duration-500 hover:scale-105 font-bold"
-            onClick={() => toggle("news")}
-          >
-            {showMore.news ? "Show Less" : "Learn More"}
-          </button>
-        </motion.div>
-
-        {/* Portfolio Card */}
-        <motion.div
-          custom={0.6}
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="bg-white rounded-4xl w-fit md:w-[32%] shadow-amber-600 shadow bg-opacity-80 md:ml-10 md:mr-10 transform transition duration-300 hover:scale-105 hover:bg-amber-50"
-        >
-          <div className="font-bold mt-2 font-serif">Portfolio</div>
-          <div className="text-sm mb-2 font-serif">Personal Developer Website</div>
-          <div className="p-2 pl-3 pr-3 font-serif">
-            A personal portfolio website showcasing projects...
-            <div
-              className={`transition-all duration-300 ease-in-out ${
-                showMore.portfolio ? "max-h-96" : "max-h-0 overflow-hidden"
-              }`}
+              {proj.title}
+            </h2>
+            <h3 className="text-sm text-gray-600 mb-3">{proj.subtitle}</h3>
+            <p className="text-sm mb-3 text-gray-800">{proj.brief}</p>
+            {showMore[proj.key] && (
+              <ul className="text-sm text-gray-700 space-y-1">
+                {proj.details.map((line, i) => {
+                  if (line.startsWith("GitHub:")) {
+                    const url = line.split("GitHub: ")[1];
+                    return (
+                      <li key={i}>
+                        • <span className="font-semibold">GitHub:</span>{" "}
+                        <a
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline hover:text-blue-800"
+                        >
+                          {url}
+                        </a>
+                      </li>
+                    );
+                  }
+                  return <li key={i}>• {line}</li>;
+                })}
+              </ul>
+            )}
+            <button
+              className="mt-4 bg-gradient-to-r from-[#ff6ec4] to-[#7873f5] px-4 py-2 rounded-full font-semibold text-white hover:from-[#7873f5] hover:to-[#ff6ec4] transition-all duration-300 shadow-md"
+              onClick={() => toggle(proj.key)}
             >
-              <p>
-                It features skills, contact details, and a clean, responsive UI to reflect your developer journey.
-              </p>
-              <p>
-                <span className="font-semibold">Tech Stack:</span> React
-              </p>
-              <p>
-                <span className="font-semibold">GitHub:</span> [Link]
-              </p>
-            </div>
+              {showMore[proj.key] ? "Show Less" : "Learn More"}
+            </button>
           </div>
-          <button
-            className="mb-4 mt-2 bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] p-6 shadow-lg px-4 py-1 rounded-full hover:from-[var(--secondary-color)] hover:to-[var(--primary-color)] transition-colors duration-500 hover:scale-105 font-bold"
-            onClick={() => toggle("portfolio")}
-          >
-            {showMore.portfolio ? "Show Less" : "Learn More"}
-          </button>
-        </motion.div>
-
-      </div>
-    </div>
+        ))}
+      </motion.div>
+    </section>
   );
 };
