@@ -60,7 +60,7 @@ export const Skills = () => {
         My Skills
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-10">
         {skillCategories.map(({ category, skills }, index) => (
           <motion.div
             key={category}
