@@ -45,7 +45,7 @@ const Intro = () => {
       <Navbar/>
       {/* Centered Text */}
       <motion.div
-        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center"
+        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center -mt-20"
         variants={container}
         initial="hidden"
         animate="visible"

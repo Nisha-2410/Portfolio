@@ -5,13 +5,24 @@ import { Skills } from "./Skills";
 import Contact from "./Contact";
 import { Project } from "./Project";
 import { motion } from "framer-motion";
+import { Parallax } from "react-scroll-parallax";
 
 const Hero = () => {
   const [showResume, setShowResume] = useState(false);
 
   return (
-    <div className="min-h-screen custom-gradient-bg px-6 md:px-14 lg:px-70 py-12">
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-between">
+    <div className="min-h-screen relative  px-6 md:px-14 lg:px-70 py-12">
+      {/* Parallax Background Image */}
+      <Parallax speed={-10}>
+        <img
+          src={"./parallax.jpg"}
+          alt="Parallax cat"
+          className="absolute top-0 left-0 w-full h-full object-cover opacity-20 pointer-events-none"
+          style={{ zIndex: 0 }}
+        />
+      </Parallax>
+
+      <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start justify-between">
         {/* Text Section */}
         <motion.div
           className="flex-1 text-center md:text-left"
@@ -65,40 +76,7 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-<a
-  href="https://www.instagram.com/yourusername"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Instagram"
-  className="border text-gray-600 border-gray-300 rounded-full hover:scale-110 transition-transform duration-300 flex items-center justify-center"
-  style={{ width: '40px', height: '40px' }}
->
-  <i className="fa-brands fa-instagram text-xl"></i>
-</a>
-
-
-<a
-  href="https://wa.me/yourphonenumber?text=Hello%20Nisha!"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="WhatsApp"
-  className="border text-gray-600 border-gray-300 rounded-full hover:scale-110 transition-transform duration-300 flex items-center justify-center"
-  style={{ width: '40px', height: '40px' }}
->
-  <i className="fa-brands fa-whatsapp text-xl"></i>
-</a>
-
-<a
-  href="https://github.com/yourgithubusername"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="GitHub"
-  className="border text-gray-600 border-gray-300 rounded-full hover:scale-110 transition-transform duration-300 flex items-center justify-center"
-  style={{ width: '40px', height: '40px', marginLeft: '10px' }} // Optional margin for spacing
->
-  <i className="fa-brands fa-github text-xl"></i>
-</a>
-
+            {/* Your social links here */}
           </motion.div>
         </motion.div>
 
@@ -108,7 +86,9 @@ const Hero = () => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
+          style={{ zIndex: 10 }}
         >
+          {/* This img is separate from parallax bg */}
           <img
             src={cat}
             alt="Nisha"
@@ -117,7 +97,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Resume Modal */}
+      {/* Resume Modal & Other Sections - no changes */}
       {showResume && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-lg max-w-4xl w-full max-h-[90vh] overflow-auto p-6 relative">
@@ -128,7 +108,6 @@ const Hero = () => {
             >
               &times;
             </button>
-            {/* Use absolute URL for iframe src */}
             <iframe
               src="/Nisha.pdf"
               title="Resume"
@@ -139,25 +118,26 @@ const Hero = () => {
         </div>
       )}
 
-      {/* Other Sections */}
-<section id="about">
-  <About />
-</section>
+      <section id="about">
+        <About />
+      </section>
 
-<section id="skills">
-  <Skills />
-</section>
+      <section id="skills">
+        <Skills />
+      </section>
 
-<section id="projects">
-  <Project />
-</section>
-    <section id="contact">
-  <Contact />
-</section>
+      <section id="projects">
+        <Project />
+      </section>
+
+      <section id="contact">
+        <Contact />
+      </section>
     </div>
   );
 };
 
 export default Hero;
+
 
 
