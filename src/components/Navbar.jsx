@@ -62,8 +62,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-between items-center p-3 bg-gray-100 sticky top-0 z-50">
-        <span className="font-bold text-xl xl:ml-80">LOGO</span>
+      <nav className="flex justify-between items-center p-4 bg-transparent sticky top-0 z-50 font-medium">
+        <span className="text-3xl xl:ml-80 font-bold text-purple-800 tracking-wide">LOGO</span>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-12 xl:mr-80">
@@ -71,9 +71,10 @@ const Navbar = () => {
             <a
               key={label}
               href={href}
-              className="text-lg hover:text-rose-400 cursor-pointer"
+              className="relative text-2xl text-purple-800 hover:text-purple-600 transition duration-200 cursor-pointer group"
             >
               {label}
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-purple-500 group-hover:w-full transition-all duration-300 ease-in-out shadow-[0_0_8px_1px_rgba(128,90,213,0.5)]" />
             </a>
           ))}
         </div>
@@ -84,7 +85,7 @@ const Navbar = () => {
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          <i className="fa-solid fa-bars text-2xl"></i>
+          <i className="fa-solid fa-bars text-3xl text-purple-800"></i>
         </button>
       </nav>
 
@@ -92,21 +93,21 @@ const Navbar = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 bg-pink-100 p-4 z-50 rounded-bl-full shadow-lg md:hidden"
+            className="fixed inset-0 bg-purple-100/90 p-4 z-50 rounded-bl-full shadow-2xl md:hidden"
             initial="closed"
             animate="open"
             exit="closed"
             variants={menuVariants}
           >
             <div className="flex justify-between items-center mb-6">
-              <span className="font-bold text-xl">LOGO</span>
+              <span className="font-bold text-2xl text-purple-800">LOGO</span>
               <button onClick={toggleMenu} aria-label="Close menu">
-                <i className="fa-solid fa-xmark text-2xl"></i>
+                <i className="fa-solid fa-xmark text-3xl text-purple-800"></i>
               </button>
             </div>
 
             <motion.div
-              className="flex flex-col items-center gap-6 text-lg mt-8"
+              className="flex flex-col items-center gap-8 mt-12"
               variants={menuVariants}
             >
               {sections.map(({ label, href }) => (
@@ -118,10 +119,11 @@ const Navbar = () => {
                     toggleMenu();
                     handleScrollToSection(href);
                   }}
-                  className="hover:text-rose-400 cursor-pointer text-xl"
+                  className="text-2xl text-purple-800 hover:text-purple-600 transition duration-200 relative group"
                   variants={itemVariants}
                 >
                   {label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-purple-500 group-hover:w-full transition-all duration-300 ease-in-out shadow-[0_0_8px_1px_rgba(128,90,213,0.5)]" />
                 </motion.a>
               ))}
             </motion.div>
@@ -133,5 +135,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 

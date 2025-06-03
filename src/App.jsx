@@ -1,7 +1,9 @@
-import { About } from "./components/About"
+
 import Hero from "./components/Hero"
+import Intro from "./components/Intro";
 import Navbar from "./components/Navbar"
-import { Skills } from "./components/Skills"
+
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 
 function App() {
@@ -9,8 +11,11 @@ function App() {
 
   return (
     <>
-      <Navbar/>
-      <Hero/>
+      
+      <Intro/>
+         <ParallaxProvider>
+      <Hero />
+    </ParallaxProvider>
      
     </>
   )
