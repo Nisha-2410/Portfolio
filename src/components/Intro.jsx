@@ -32,17 +32,19 @@ const buttonVariants = {
 
 const Intro = () => {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-black">
+    <div className="relative min-h-screen w-full overflow-hidden">
       {/* Background Video */}
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        className="fixed top-0 left-0 w-full h-full object-cover -z-10"
         src="/video.mp4"
         autoPlay
         muted
         loop
         playsInline
       />
-      <Navbar/>
+           <div className="fixed top-0 left-0 w-full z-20">
+        <Navbar />
+      </div>
       {/* Centered Text */}
       <motion.div
         className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center -mt-20"
@@ -52,11 +54,9 @@ const Intro = () => {
       >
         <motion.h1
           style={{
-            fontSize: "clamp(2rem, 6vw, 3.8rem)",
+            fontSize: "clamp(3.8rem, 6vw, 3.8rem)",
             lineHeight: 1.1,
             color: "#5B3E96",
-            WebkitTextStroke: "1px rgba(0,0,0,0.6)",
-            
             fontWeight: "800",
             fontFamily: "'Georgia'",
           }}
@@ -70,8 +70,6 @@ const Intro = () => {
             lineHeight: 1.2,
             color: "#9B59B6",
             marginTop: "0.3rem",
-            WebkitTextStroke: "0.8px rgba(0,0,0,0.4)",
-            textStroke: "0.8px rgba(0,0,0,0.4)",
             fontWeight: "600",
             fontFamily: "'Georgia'",
           }}
@@ -97,12 +95,23 @@ const Intro = () => {
             Let’s Connect
           </motion.button>
         </div>
+       
       </motion.div>
+       <div
+  className="absolute bottom-0 left-0 w-full h-50 z-0"
+  style={{
+    background: 'linear-gradient(to bottom, transparent, rgb(238, 238, 238))',
+  }}
+/>
+
+
+       
     </div>
   );
 };
 
 export default Intro;
+
 
 
 

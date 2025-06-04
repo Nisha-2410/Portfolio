@@ -58,7 +58,7 @@ export const Skills = () => {
       variants={containerVariants}
     >
       <motion.h2
-        className="text-4xl md:text-4xl lg:text-5xl font-bold mb-10 text-center"
+        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 text-center"
         variants={topRowVariant}
         style={{ color: "#5B3E96" }}
       >

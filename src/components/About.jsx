@@ -4,27 +4,34 @@ import { motion } from "framer-motion";
 export function About() {
   return (
     <>
-      <div className="flex flex-col justify-center items-center mt-12">
+      <div className="flex flex-col justify-center items-center mt-12 py-50">
         
         {/* Heading */}
-        <motion.div
-          className="text-4xl font-bold md:text-4xl lg:text-5xl text-center"
-          style={{ color: '#5B3E96' }}
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          About Me  In a <span className='bg-gradient-to-r from-purple-700 via-purple-500 to-pink-500 bg-clip-text text-transparent transition-all duration-500 group-hover:from-pink-500 group-hover:via-fuchsia-500 group-hover:to-purple-600'>Nutshell</span>
-        </motion.div>
+<motion.div
+  className="relative text-4xl font-bold md:text-5xl lg:text-6xl text-center"
+  style={{ color: '#5B3E96' }}
+  initial={{ opacity: 0, y: -30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+>
+  About Me In a{" "}
+  <span className="relative inline-block">
+    <span className="bg-gradient-to-r from-purple-700 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+      Nutshell
+    </span>
+    <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-700 via-purple-500 to-pink-500 rounded-full animate-[pulse_2s_infinite]" />
+  </span>
+</motion.div>
+
 
         {/* Card */}
         <motion.div
-          className="flex flex-col justify-center items-center mt-5 rounded-3xl w-fit max-w-4xl md:w-[60%] lg:w-[70%] h-auto mx-3"
+          className="flex flex-col justify-center items-center mt-10 rounded-3xl w-fit max-w-4xl md:w-[60%] lg:w-[70%] h-auto mx-3"
           style={{ 
-            background: 'rgba(255, 255, 255, 0.85)',
-            boxShadow: 'inset 0 0 15px 5px rgba(127, 112, 209, 0.6)',
-            border: '1px solid rgba(127, 112, 209, 0.5)',
+            background: 'rgba(255, 255, 255, 0.3)',
+            boxShadow: 'inset 0 0 15px 5px rgba(157, 89, 182, 0.7)',
+            border: '1px solid rgba(127, 122, 209, 0.5)',
           }}
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}

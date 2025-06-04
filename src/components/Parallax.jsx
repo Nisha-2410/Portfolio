@@ -1,23 +1,19 @@
-// ParallaxSection.jsx
-import React from "react";
+// src/components/ParallaxBackground.jsx
 import { Parallax } from "react-scroll-parallax";
 
-const ParallaxSection = () => (
-  <div className="relative h-[60vh] overflow-hidden flex items-center justify-center bg-black text-white">
+const ParallaxBackground = () => {
+  return (
     <Parallax speed={-20}>
-      <img
-        src="/parallax.jpg"
-        alt="Parallax"
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-      />
+      <div className="fixed inset-0 z-0">
+        <img
+          src="/parallax.jpg"
+          alt="Background"
+          className="w-full h-full object-cover opacity-30 pointer-events-none"
+        />
+      </div>
     </Parallax>
+  );
+};
 
-    <div className="absolute inset-0 bg-black/50 z-10"></div>
-    <div className="z-20 px-6 text-center">
-      <h2 className="text-3xl md:text-5xl font-bold">Vision. Vibes. Velocity. 🌌</h2>
-      <p className="mt-4 max-w-xl mx-auto text-lg">Scroll down to see the magic unfold.</p>
-    </div>
-  </div>
-);
+export default ParallaxBackground;
 
-export default ParallaxSection;
