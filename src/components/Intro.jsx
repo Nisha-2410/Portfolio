@@ -30,6 +30,13 @@ const buttonVariants = {
   }),
 };
 
+const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 const Intro = () => {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
@@ -41,14 +48,15 @@ const Intro = () => {
         muted
         loop
         playsInline
-         preload="auto" 
+        preload="auto"
       />
-           <div className="fixed top-0 left-0 w-full z-20">
+      <div className="fixed top-0 left-0 w-full z-20">
         <Navbar />
       </div>
+
       {/* Centered Text */}
       <motion.div
-        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center md:-mt-12 "
+        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center md:-mt-12"
         variants={container}
         initial="hidden"
         animate="visible"
@@ -85,6 +93,7 @@ const Intro = () => {
             className="px-6 py-3 rounded-md bg-gradient-to-r from-purple-500 via-purple-700 to-blue-900 text-white font-semibold shadow-lg hover:scale-105 transform transition-transform duration-300"
             variants={buttonVariants}
             custom={0}
+            onClick={() => scrollToSection("hero")}
           >
             Let’s Explore
           </motion.button>
@@ -92,27 +101,24 @@ const Intro = () => {
             className="px-6 py-3 rounded-md border-2 border-purple-600 text-purple-600 font-semibold hover:bg-purple-600 hover:text-white transition-colors duration-300"
             variants={buttonVariants}
             custom={1}
+            onClick={() => scrollToSection("contact")}
           >
             Let’s Connect
           </motion.button>
         </div>
-       
       </motion.div>
-       <div
-  className="absolute bottom-0 left-0 w-full h-50 z-0"
-  style={{
-    background: 'linear-gradient(to bottom, transparent, rgb(238, 238, 238))',
-  }}
-/>
 
-
-       
+      <div
+        className="absolute bottom-0 left-0 w-full h-50 z-0"
+        style={{
+          background: "linear-gradient(to bottom, transparent, rgb(238, 238, 238))",
+        }}
+      />
     </div>
   );
 };
 
 export default Intro;
-
 
 
 
