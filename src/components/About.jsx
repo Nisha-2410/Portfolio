@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export function About() {
   return (
     <>
-      <div className="flex flex-col justify-center items-center mt-12 py-50">
+      <div className="flex flex-col justify-center items-center mt-12 py-20">
         
         {/* Heading */}
 <motion.div

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaPython, FaDatabase,
 } from "react-icons/fa";
@@ -27,23 +27,27 @@ const skills = [
 
 const bubbleVariant = {
   hidden: { opacity: 0, scale: 0.6 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-  exit: { opacity: 0, scale: 0.6, transition: { duration: 0.2 } },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.3 },
+  },
 };
 
 export const Skills = () => {
   const [showAll, setShowAll] = useState(false);
   const [skillLimit, setSkillLimit] = useState(skills.length);
+  const [animatedOnce, setAnimatedOnce] = useState([]);
 
   useEffect(() => {
     const updateLimit = () => {
       const width = window.innerWidth;
-      if (width < 768) setSkillLimit(6);       // Mobile: show 6
-      else if (width < 1024) setSkillLimit(7);  // Medium: show 7
-      else setSkillLimit(skills.length);       // Large: show all
+      if (width < 768) setSkillLimit(6);
+      else if (width < 1024) setSkillLimit(7);
+      else setSkillLimit(skills.length);
     };
 
-    updateLimit(); // initial check
+    updateLimit();
     window.addEventListener("resize", updateLimit);
     return () => window.removeEventListener("resize", updateLimit);
   }, []);
@@ -51,32 +55,34 @@ export const Skills = () => {
   const visibleSkills = showAll ? skills : skills.slice(0, skillLimit);
 
   return (
-    <section className="max-w-5xl mx-auto px-4 py-20">
-      <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-purple-800" >
+    <section className="max-w-5xl mx-auto px-4 py-15">
+      <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-purple-800">
         My <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-900 bg-clip-text text-transparent underline">Evolving</span> Skills
       </h2>
 
       <div className="flex flex-wrap justify-center gap-6">
-        <AnimatePresence>
-          {visibleSkills.map(({ name, icon }) => (
-            <motion.div
-              key={name}
-              variants={bubbleVariant}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="w-28 h-28 rounded-full bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all flex flex-col items-center justify-center text-purple-900 text-xl font-semibold"
-              style={{
-                border: "1px solid rgba(127, 112, 209, 0.4)",
-                boxShadow: "inset 0 0 12px 2px rgba(127, 112, 209, 0.3)",
-                background: "rgba(255, 255, 255, 0.85)",
-              }}
-            >
-              <div className="text-3xl mb-2">{icon}</div>
-              <span className="text-sm text-center">{name}</span>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+        {visibleSkills.map(({ name, icon }, i) => (
+          <motion.div
+            key={name}
+            variants={bubbleVariant}
+            initial={animatedOnce.includes(name) ? false : "hidden"}
+            animate="visible"
+            onAnimationComplete={() => {
+              if (!animatedOnce.includes(name)) {
+                setAnimatedOnce((prev) => [...prev, name]);
+              }
+            }}
+            className="w-28 h-28 rounded-full bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all flex flex-col items-center justify-center text-purple-900 text-xl font-semibold"
+            style={{
+              border: "1px solid rgba(127, 112, 209, 0.4)",
+              boxShadow: "inset 0 0 12px 2px rgba(127, 112, 209, 0.3)",
+              background: "rgba(255, 255, 255, 0.85)",
+            }}
+          >
+            <div className="text-3xl mb-2">{icon}</div>
+            <span className="text-sm text-center">{name}</span>
+          </motion.div>
+        ))}
       </div>
 
       {skillLimit < skills.length && (

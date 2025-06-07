@@ -20,13 +20,13 @@ const Hero = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <motion.h1
             className="text-3xl md:text-5xl lg:text-6xl font-bold leading-snug"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
             Hi,{" "}
@@ -115,7 +115,7 @@ const Hero = () => {
           <img
             src={cat}
             alt="Nisha"
-            className="rounded-full w-[180px] md:w-[280px] lg:w-[320px] shadow-lg hover:scale-105 transition-transform duration-300"
+            className="rounded-full w-[150px] md:w-[280px] lg:w-[320px] shadow-lg hover:scale-105 transition-transform duration-300"
             style={{
               boxShadow: "0 0 15px 7px rgba(155, 89, 182, 0.7)", // Purple glow
             }}

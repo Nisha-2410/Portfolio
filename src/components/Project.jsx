@@ -84,7 +84,7 @@ export const Project = () => {
   const displayedProjects = showAll ? projectsData : projectsData.slice(0, 3);
 
   return (
-    <section className="pt-10 pb-15 px-5 max-w-7xl mx-auto">
+    <section className="pt-15 pb-15 px-5 max-w-7xl mx-auto">
       <h1
         className="text-3xl md:text-5xl lg:text-6xl text-purple-900 font-bold text-center mb-8"
         
@@ -106,8 +106,8 @@ export const Project = () => {
             className="bg-white rounded-3xl p-5 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
             whileHover={{ scale: 1.05 }}
             style={{
-            background: 'rgba(255, 255, 255, 0.8)',
-            boxShadow: 'inset 0 0 15px 5px rgba(157, 89, 182, 0.7)',
+            background: 'rgba(255, 255, 255, 0.7)',
+            boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
             border: '1px solid rgba(127, 122, 209, 0.5)',
             }}
           >
