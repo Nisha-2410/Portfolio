@@ -86,13 +86,14 @@ export const Project = () => {
   return (
     <section className="pt-10 pb-15 px-5 max-w-7xl mx-auto">
       <h1
-        className="text-4xl md:text-5xl lg:text-6xl text-purple-950 font-bold text-center mb-8"
+        className="text-3xl md:text-5xl lg:text-6xl text-purple-900 font-bold text-center mb-8"
         
       >
         What I’ve{" "}
-<span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent font-sans underline">
+
   Built
-</span>
+  
+
 
 
 
@@ -104,6 +105,11 @@ export const Project = () => {
             key={proj.key}
             className="bg-white rounded-3xl p-5 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
             whileHover={{ scale: 1.05 }}
+            style={{
+            background: 'rgba(255, 255, 255, 0.8)',
+            boxShadow: 'inset 0 0 15px 5px rgba(157, 89, 182, 0.7)',
+            border: '1px solid rgba(127, 122, 209, 0.5)',
+            }}
           >
             <img
               src={proj.screenshot}

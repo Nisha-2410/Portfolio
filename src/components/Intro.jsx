@@ -47,7 +47,7 @@ const Intro = () => {
       </div>
       {/* Centered Text */}
       <motion.div
-        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center -mt-12"
+        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center md:-mt-12 "
         variants={container}
         initial="hidden"
         animate="visible"

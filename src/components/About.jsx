@@ -8,7 +8,7 @@ export function About() {
         
         {/* Heading */}
 <motion.div
-  className="relative text-4xl font-bold md:text-5xl lg:text-6xl text-center"
+  className="relative text-3xl font-bold md:text-5xl lg:text-6xl text-center"
   style={{ color: '#5B3E96' }}
   initial={{ opacity: 0, y: -30 }}
   whileInView={{ opacity: 1, y: 0 }}

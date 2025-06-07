@@ -1,210 +1,94 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaPython, FaDatabase,
+} from "react-icons/fa";
+import {
+  SiTailwindcss, SiRedux, SiMongodb, SiJavascript,
+  SiCplusplus, SiFirebase, SiMysql, SiExpress,
+} from "react-icons/si";
 
-const skillCategories = [
-  {
-    category: "Frontend",
-    skills: ["React", "HTML", "CSS", "Tailwind CSS", "Redux"],
-  },
-  {
-    category: "Languages",
-    skills: ["C++", "JavaScript", "Python", "SQL"],
-  },
-  {
-    category: "Backend",
-    skills: ["Node.js", "Express", "REST APIs"],
-  },
-  {
-    category: "Databases",
-    skills: ["MongoDB", "MySQL", "Firebase"],
-  },
+const skills = [
+  { name: "React", icon: <FaReact /> },
+  { name: "HTML", icon: <FaHtml5 /> },
+  { name: "CSS", icon: <FaCss3Alt /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+  { name: "Redux", icon: <SiRedux /> },
+  { name: "C++", icon: <SiCplusplus /> },
+  { name: "JavaScript", icon: <SiJavascript /> },
+  { name: "Python", icon: <FaPython /> },
+  { name: "SQL", icon: <FaDatabase /> },
+  { name: "Node.js", icon: <FaNodeJs /> },
+  { name: "Express", icon: <SiExpress /> },
+  { name: "MongoDB", icon: <SiMongodb /> },
+  { name: "MySQL", icon: <SiMysql /> },
+  { name: "Firebase", icon: <SiFirebase /> },
 ];
 
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const topRowVariant = {
-  hidden: { opacity: 0, y: -40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
-const sideSquareLeftVariant = {
-  hidden: { opacity: 0, x: -40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.4 } },
-};
-
-const sideSquareRightVariant = {
-  hidden: { opacity: 0, x: 40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.4 } },
-};
-
-const bottomRowVariant = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+const bubbleVariant = {
+  hidden: { opacity: 0, scale: 0.6 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+  exit: { opacity: 0, scale: 0.6, transition: { duration: 0.2 } },
 };
 
 export const Skills = () => {
+  const [showAll, setShowAll] = useState(false);
+  const [skillLimit, setSkillLimit] = useState(skills.length);
+
+  useEffect(() => {
+    const updateLimit = () => {
+      const width = window.innerWidth;
+      if (width < 768) setSkillLimit(6);       // Mobile: show 6
+      else if (width < 1024) setSkillLimit(7);  // Medium: show 7
+      else setSkillLimit(skills.length);       // Large: show all
+    };
+
+    updateLimit(); // initial check
+    window.addEventListener("resize", updateLimit);
+    return () => window.removeEventListener("resize", updateLimit);
+  }, []);
+
+  const visibleSkills = showAll ? skills : skills.slice(0, skillLimit);
+
   return (
-    <motion.section
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 mt-10"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.4 }}
-      variants={containerVariants}
-    >
-      <motion.h2
-        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 text-center"
-        variants={topRowVariant}
-        style={{ color: "#5B3E96" }}
-      >
-        Here’s what I’m <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-900 bg-clip-text text-transparent font-sans underline">Capable</span> of
-      </motion.h2>
+    <section className="max-w-5xl mx-auto px-4 py-20">
+      <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-purple-800" >
+        My <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-900 bg-clip-text text-transparent underline">Evolving</span> Skills
+      </h2>
 
-      {/* === Small Devices Custom Layout === */}
-      <div className="block md:hidden space-y-4">
-        {/* Frontend - full width */}
-        <motion.div
-          className="rounded-2xl p-6 flex flex-col justify-center items-center bg-white"
-          style={{
-            border: "1px solid rgba(127, 112, 209, 0.5)",
-            boxShadow: "inset 0 0 15px 5px rgba(127, 112, 209, 0.6)",
-            background: "rgba(255, 255, 255, 0.85)",
-          }}
-          variants={topRowVariant}
-        >
-          <h3 className="text-2xl font-extrabold mb-6 text-purple-900">
-            Frontend
-          </h3>
-          <ul className="flex flex-wrap justify-center gap-2 text-sm text-center">
-            {skillCategories[0].skills.map((skill) => (
-              <li
-                key={skill}
-                className="bg-purple-200 text-purple-900 px-4 py-1 rounded-full hover:bg-purple-400 hover:text-white transition"
-              >
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+      <div className="flex flex-wrap justify-center gap-6">
+        <AnimatePresence>
+          {visibleSkills.map(({ name, icon }) => (
+            <motion.div
+              key={name}
+              variants={bubbleVariant}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="w-28 h-28 rounded-full bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all flex flex-col items-center justify-center text-purple-900 text-xl font-semibold"
+              style={{
+                border: "1px solid rgba(127, 112, 209, 0.4)",
+                boxShadow: "inset 0 0 12px 2px rgba(127, 112, 209, 0.3)",
+                background: "rgba(255, 255, 255, 0.85)",
+              }}
+            >
+              <div className="text-3xl mb-2">{icon}</div>
+              <span className="text-sm text-center">{name}</span>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
 
-        {/* Backend and Databases side-by-side */}
-        <div className="flex gap-4">
-          <motion.div
-            className="flex-1 rounded-2xl p-4 flex flex-col justify-center items-center bg-white"
-            style={{
-              border: "1px solid rgba(127, 112, 209, 0.5)",
-              boxShadow: "inset 0 0 15px 5px rgba(127, 112, 209, 0.6)",
-              background: "rgba(255, 255, 255, 0.85)",
-            }}
-            variants={sideSquareLeftVariant}
+      {skillLimit < skills.length && (
+        <div className="mt-10 flex justify-center">
+          <button
+            onClick={() => setShowAll((prev) => !prev)}
+            className="px-6 py-2 text-white rounded-full bg-gradient-to-r from-purple-500 to-blue-600 shadow-md hover:shadow-xl hover:scale-105 transition"
           >
-            <h3 className="text-2xl font-extrabold mb-6 text-purple-900">
-              Backend
-            </h3>
-            <ul className="flex flex-wrap justify-center gap-1 text-xs text-center">
-              {skillCategories[2].skills.map((skill) => (
-                <li
-                  key={skill}
-                  className="bg-purple-200 text-purple-900 px-3 py-1 rounded-full hover:bg-purple-400 hover:text-white transition"
-                >
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.div
-            className="flex-1 rounded-2xl p-4 flex flex-col justify-center items-center bg-white"
-            style={{
-              border: "1px solid rgba(127, 112, 209, 0.5)",
-              boxShadow: "inset 0 0 15px 5px rgba(127, 112, 209, 0.6)",
-              background: "rgba(255, 255, 255, 0.85)",
-            }}
-            variants={sideSquareRightVariant}
-          >
-            <h3 className="text-2xl font-extrabold mb-6 text-purple-900">
-              Databases
-            </h3>
-            <ul className="flex flex-wrap justify-center gap-1 text-xs text-center">
-              {skillCategories[3].skills.map((skill) => (
-                <li
-                  key={skill}
-                  className="bg-purple-200 text-purple-900 px-3 py-1 rounded-full hover:bg-purple-400 hover:text-white transition"
-                >
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+            {showAll ? "Hide Skills" : "View All Skills"}
+          </button>
         </div>
-
-        {/* Languages - full width */}
-        <motion.div
-          className="rounded-2xl p-6 flex flex-col justify-center items-center bg-white"
-          style={{
-            border: "1px solid rgba(127, 112, 209, 0.5)",
-            boxShadow: "inset 0 0 15px 5px rgba(127, 112, 209, 0.6)",
-            background: "rgba(255, 255, 255, 0.85)",
-          }}
-          variants={bottomRowVariant}
-        >
-          <h3 className="text-2xl font-extrabold mb-6 text-purple-900">
-            Languages
-          </h3>
-          <ul className="flex flex-wrap justify-center gap-2 text-sm text-center">
-            {skillCategories[1].skills.map((skill) => (
-              <li
-                key={skill}
-                className="bg-purple-200 text-purple-900 px-4 py-1 rounded-full hover:bg-purple-400 hover:text-white transition"
-              >
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-      </div>
-
-      {/* === Medium & Large Devices Grid with padding === */}
-      <div className="hidden md:grid md:grid-cols-2 md:grid-rows-2 gap-6">
-        {skillCategories.map(({ category, skills }) => (
-          <motion.div
-            key={category}
-            className="rounded-2xl p-10 flex flex-col justify-center items-center bg-white" // increased padding for med/large
-            style={{
-              border: "1px solid rgba(127, 112, 209, 0.5)",
-              boxShadow: "inset 0 0 15px 5px rgba(127, 112, 209, 0.6)",
-              background: "rgba(255, 255, 255, 0.85)",
-            }}
-            variants={
-              category === "Frontend" || category === "Languages"
-                ? topRowVariant
-                : category === "Backend"
-                ? sideSquareLeftVariant
-                : sideSquareRightVariant
-            }
-          >
-            <h3 className="text-2xl font-extrabold mb-6 text-purple-900">
-              {category}
-            </h3>
-            <ul className="flex flex-wrap justify-center gap-3 text-base text-center">
-              {/* increased bubble size by increasing padding and font size */}
-              {skills.map((skill) => (
-                <li
-                  key={skill}
-                  className="bg-purple-200 text-purple-900 px-6 py-2 rounded-full hover:bg-purple-400 hover:text-white transition"
-                >
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
-      </div>
-    </motion.section>
+      )}
+    </section>
   );
 };
-

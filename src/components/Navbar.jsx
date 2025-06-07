@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, rgba } from "framer-motion";
 
 const menuVariants = {
   open: {
@@ -62,7 +62,11 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-between items-center p-4 bg-transparent sticky top-0 z-50 font-medium">
+      <nav className="flex justify-between items-center p-4  sticky top-0 z-50 font-medium"
+      style={{          background:
+      "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0))",
+    backdropFilter: "blur(15px)",}}>
+
         <span className="text-3xl xl:ml-80 font-bold text-purple-800 tracking-wide">LOGO</span>
 
         {/* Desktop Nav */}
