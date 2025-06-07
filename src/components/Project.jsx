@@ -1,132 +1,152 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+const projectsData = [
+  {
+    key: "inote",
+    title: "iNotebook",
+    subtitle: "Cloud-Based Note-Taking App",
+    brief: "A secure and responsive cloud-based note-taking web app...",
+    details: [
+      "Users can sign up, log in, and manage notes from anywhere.",
+      "Tech Stack: React, Node.js, Express, MongoDB",
+      "GitHub: https://github.com/Nisha-2410/inotebook",
+    ],
+    techIcons: ["fab fa-react", "fab fa-node-js", "fas fa-database"],
+    screenshot: "/screenshots/inote.png",
+  },
+  {
+    key: "news",
+    title: "NewsMonkey",
+    subtitle: "Live News App",
+    brief: "A news aggregator app that fetches real-time headlines...",
+    details: [
+      "Get category-based news using News API.",
+      "Tech Stack: React, NewsAPI",
+      "GitHub: https://github.com/Nisha-2410/my-app",
+    ],
+      techIcons: [
+    "fab fa-react",
+    "fab fa-html5",
+    "fab fa-css3-alt",
+    "fab fa-js-square",
+    "fas fa-newspaper", // representing News API with newspaper icon
+  ],
+    screenshot: "/screenshots/news.png",
+  },
+  {
+    key: "portfolio",
+    title: "Portfolio",
+    subtitle: "Personal Developer Website",
+    brief: "A personal portfolio website showcasing projects...",
+    details: [
+      "Includes skills, contact form, and responsive layout.",
+      "Tech Stack: React, HTML, Tailwind, Framer Motion",
+      "GitHub: https://github.com/Nisha-2410/Portfolio",
+    ],
+    techIcons: ["fab fa-react", "fab fa-html5", "fab fa-css3-alt"],
+    screenshot: "/screenshots/portfolio.png",
+  },
+  // Additional projects
+  {
+    key: "EduVault",
+    title: "EduVault",
+    subtitle: "All Your Study Resources, One Vault",
+    brief: "A platform to share technical articles and tutorials.",
+    details: [
+      "Your one-stop digital library for notes, previous year questions, and books across all departments and subjects..",
+      "Tech Stack: HTML,CSS,JavaScript",
+      "GitHub: https://github.com/Nisha-2410/EduVault",
+    ],
+    techIcons: ["fab fa-js", "fas fa-database", "fab fa-css3-alt"],
+    screenshot: "/screenshots/blog.png",
+  },
+  {
+    key: "TODO",
+    title: "TODO ",
+    subtitle: "Tasks Made Simple and Manageable.",
+    brief: "A simple and efficient task manager to help you organize your day and boost productivity",
+    details: [
+      "Socket.IO powered, with private and group messaging.",
+      "Tech Stack: React, Node.js, Socket.IO",
+      "GitHub: https://github.com/Nisha-2410/todo",
+    ],
+    techIcons: ["fab fa-react", "fab fa-node-js", "fas fa-comments"],
+    screenshot: "/screenshots/chatapp.png",
+  },
+];
 
 export const Project = () => {
-  const [showMore, setShowMore] = useState({
-    inote: false,
-    news: false,
-    portfolio: false,
-  });
+  const [showAll, setShowAll] = useState(false);
 
-  const toggle = (key) => {
-    setShowMore((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const projects = [
-    {
-      key: "inote",
-      title: "iNotebook",
-      subtitle: "Cloud-Based Note-Taking App",
-      brief: "A secure and responsive cloud-based note-taking web app...",
-      details: [
-        "Users can sign up, log in, and manage notes from anywhere.",
-        "Tech Stack: React, Node.js, Express, MongoDB",
-        "GitHub: https://github.com/Nisha-2410/inotebook",
-      ],
-    },
-    {
-      key: "news",
-      title: "NewsMonkey",
-      subtitle: "Live News App",
-      brief: "A news aggregator app that fetches real-time headlines...",
-      details: [
-        "Get category-based news using News API.",
-        "Tech Stack: React, NewsAPI",
-        "GitHub: https://github.com/Nisha-2410/my-app",
-      ],
-    },
-    {
-      key: "portfolio",
-      title: "Portfolio",
-      subtitle: "Personal Developer Website",
-      brief: "A personal portfolio website showcasing projects...",
-      details: [
-        "Includes skills, contact form, and responsive layout.",
-        "Tech Stack: React, HTML, Tailwind, Framer Motion",
-        "GitHub: https://github.com/Nisha-2410/Portfolio",
-      ],
-    },
-  ];
+  // Determine which projects to display
+  const displayedProjects = showAll ? projectsData : projectsData.slice(0, 3);
 
   return (
-    <section className="pt-10 pb-15 px-5">
+    <section className="pt-10 pb-15 px-5 max-w-7xl mx-auto">
       <h1
-        className="text-4xl md:text-5xl font-bold text-center mb-8"
-        style={{ color: "#5B3E96" }}
+        className="text-4xl md:text-5xl lg:text-6xl text-purple-950 font-bold text-center mb-8"
+        
       >
         What I’ve{" "}
-        <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-900 bg-clip-text text-transparent font-sans underline">
-          Built
-        </span>
+<span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent font-sans underline">
+  Built
+</span>
+
+
+
       </h1>
 
-      <div className="grid gap-10 md:grid-cols-3">
-        {projects.map((proj) => (
+      <div className="grid md:grid-cols-3 gap-8 mb-8">
+        {displayedProjects.map((proj) => (
           <motion.div
             key={proj.key}
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-            style={{
-              background: "rgba(255, 255, 255, 0.85)",
-              boxShadow: "inset 0 0 15px 5px rgba(127, 112, 209, 0.6)",
-              border: "1px solid rgba(127, 112, 209, 0.5)",
-              willChange: "transform, opacity",
-            }}
-            className="p-6 text-center rounded-3xl shadow-inner border border-gray-200 cursor-pointer"
+            className="bg-white rounded-3xl p-5 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
+            whileHover={{ scale: 1.05 }}
           >
-            <h2 className="text-xl font-bold mb-1" style={{ color: "#5B3E96" }}>
+            <img
+              src={proj.screenshot}
+              alt={proj.title}
+              className="rounded-xl mb-4 w-full h-48 object-cover"
+            />
+            <h2
+              className="text-xl font-bold mb-1"
+              style={{ color: "#5B3E96" }}
+            >
               {proj.title}
             </h2>
-            <h3 className="text-sm text-gray-600 mb-3">{proj.subtitle}</h3>
-            <p className="text-sm mb-3 text-gray-800">{proj.brief}</p>
-
-            {showMore[proj.key] && (
-              <ul className="text-sm text-gray-700 space-y-1 mb-3 text-left">
-                {proj.details.map((line, i) => {
-                  if (line.startsWith("GitHub:")) {
-                    const url = line.split("GitHub: ")[1];
-                    return (
-                      <li key={i}>
-                        • <span className="font-semibold">GitHub:</span>{" "}
-                        <a
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 underline hover:text-blue-800"
-                        >
-                          {url}
-                        </a>
-                      </li>
-                    );
-                  }
-                  return <li key={i}>• {line}</li>;
-                })}
-              </ul>
-            )}
-
-            <button
-              onClick={() => toggle(proj.key)}
-              className="mt-4 bg-gradient-to-r from-[#ff6ec4] to-[#7873f5] px-4 py-2 rounded-full font-semibold text-white hover:from-[#7873f5] hover:to-[#ff6ec4] transition-all duration-300 shadow-md"
+            <h3 className="text-sm text-gray-600 mb-2">{proj.subtitle}</h3>
+            <p className="text-gray-700 mb-3">{proj.brief}</p>
+            <div className="flex space-x-3 mb-2">
+              {proj.techIcons.map((icon, idx) => (
+                <i
+                  key={idx}
+                  className={`${icon} text-xl`}
+                  title={icon.split(" ")[1].replace("fa-", "")}
+                />
+              ))}
+            </div>
+            <a
+              href={proj.details.find((d) => d.startsWith("GitHub:"))?.split("GitHub: ")[1]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline hover:text-blue-800 text-sm"
             >
-              {showMore[proj.key] ? "Show Less" : "Learn More"}
-            </button>
+              View on GitHub
+            </a>
           </motion.div>
         ))}
+      </div>
+
+      {/* Toggle button */}
+      <div className="text-center">
+        <button
+          onClick={() => setShowAll((prev) => !prev)}
+          className="px-6 py-3 bg-gradient-to-r from-purple-700 to-pink-500 text-white rounded-full font-semibold hover:from-pink-500 hover:to-purple-700 transition-colors duration-300 shadow-lg"
+        >
+          {showAll ? "View Less" : "View All Projects"}
+        </button>
       </div>
     </section>
   );

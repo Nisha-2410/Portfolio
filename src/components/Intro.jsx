@@ -47,14 +47,14 @@ const Intro = () => {
       </div>
       {/* Centered Text */}
       <motion.div
-        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center -mt-20"
+        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center -mt-12"
         variants={container}
         initial="hidden"
         animate="visible"
       >
         <motion.h1
           style={{
-            fontSize: "clamp(3.8rem, 6vw, 3.8rem)",
+            fontSize: "clamp(3.4rem, 6vw, 3.8rem)",
             lineHeight: 1.1,
             color: "#5B3E96",
             fontWeight: "800",
